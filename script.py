@@ -35,7 +35,7 @@ def check_bitlink(token, url, link_to_check):
 
 def main():
     load_dotenv()
-    token = os.getenv("TOKEN")
+    token = os.getenv("TOKEN_BITLY")
     url = 'https://api-ssl.bitly.com'
     link_to_check = input("Введите ссылку: \n")
     if check_bitlink(link_to_check=link_to_check, token=token, url=url):
@@ -45,7 +45,7 @@ def main():
             exit(print(error))
     else:
         try:
-            print(f"Ваш битлинк:{create_short_link(long_url=link_to_check, token=token, url=url)}")
+            print(f"Ваш битлинк:{create_short_link(long_url=link_to_check, token=token, url=url)}"  )
         except requests.exceptions.HTTPError as error:
             exit(print(error))
 
