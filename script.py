@@ -22,7 +22,7 @@ def count_clicks(token, url, link):
     headers = {"Authorization": f"Bearer {token}", "unit": "day", "units": "-1"}
     response = requests.get(f"{url}{address}{bitlink[1]}{bitlink[2]}{end_point}", headers=headers)
     response.raise_for_status()
-    return f"Всего кликов за день: {response.json()['total_clicks']}"
+    return f"Всего кликов за всё время: {response.json()['total_clicks']}"
 
 
 def check_bitlink(token, url, link_to_check):
