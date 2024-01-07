@@ -27,5 +27,16 @@ TOKEN="введите ваш токен"
 ```bash
 python3 script.py 
 ```
-6. Пример работы:
-![](https://github.com/BigBadRussian/create_bitlink_count_click/blob/master/link_creator_counter.gif)
+6. Пример работы:  
+``` bash
+$ python3 script.py
+Введите ссылку: 
+https://slides.dvmn.org/voron434/requests/#/3
+Ваш битлинк:https://bit.ly/3vxU7Ct
+```
+``` bash
+$ python3 script.py
+Введите ссылку: 
+https://bit.ly/3vxU7Ct
+Всего кликов за всё время: 1
+```
