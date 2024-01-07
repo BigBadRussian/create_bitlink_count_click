@@ -28,3 +28,4 @@ TOKEN="введите ваш токен"
 python3 script.py 
 ```
 6. Пример работы:
+![](https://github.com/BigBadRussian/create_bitlink_count_click/blob/master/link_creator_counter.gif)
