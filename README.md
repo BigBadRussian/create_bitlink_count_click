@@ -18,7 +18,7 @@ pip3 install -r requirements.txt
 1. Создайте файл ".env" рядом со скриптом.
 2. Запишите в .env файл ваш токен API Bitly.com
 ### Получить токен
-1. Зарегистрируйтесь на сайте [bitly.com](https://bitly.com/)
+1. Зарегистрируйтесь на сайте [bitly.com](https://bitly.com/a/sign_up)
 2. Получите токен доступа к API. [Вот инструкция.](https://support.bitly.com/hc/en-us/articles/230647907-How-do-I-generate-an-OAuth-access-token-for-the-Bitly-API-#:~:text=Log%20in%20to%20your%20Bitly,password%20and%20click%20Generate%20token.)
 ## Запуск
 Запустите файл script.py с помощью CLI:
