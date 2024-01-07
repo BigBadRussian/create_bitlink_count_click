@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 def create_short_link(long_url, token, url):
     address = "/v4/shorten"
     headers = {"Authorization": f"Bearer {token}"}
-    payload = {"long_url": f"{long_url}",
+    payload = {"long_url": long_url,
                "domain": "bit.ly"}
     response = requests.post(f"{url}{address}", headers=headers, json=payload)
     response.raise_for_status()
