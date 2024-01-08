@@ -39,16 +39,16 @@ def check_bitlink(token, link_to_check):
 
 def main():
     load_dotenv()
-    token_bitly = os.environ['TOKEN_BITLY']
+    bitly_token = os.environ['BITLY_TOKEN']
     link_to_check = input("Введите ссылку: \n")
-    if check_bitlink(token_bitly, link_to_check):
+    if check_bitlink(bitly_token, link_to_check):
         try:
-            print(f"Всего кликов за всё время: {count_clicks(token_bitly, link=link_to_check)}")
+            print(f"Всего кликов за всё время: {count_clicks(bitly_token, link=link_to_check)}")
         except requests.exceptions.HTTPError as error:
             print(error)
     else:
         try:
-            print(f"Ваш битлинк:{create_short_link(token_bitly, link_to_check)}")
+            print(f"Ваш битлинк:{create_short_link(bitly_token, link_to_check)}")
         except requests.exceptions.HTTPError as error:
             print(error)
 
