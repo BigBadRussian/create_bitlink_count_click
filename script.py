@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from urllib.parse import urlsplit
 
 
-def create_short_link(long_url, token):
+def create_short_link(token, long_url):
     url = 'https://api-ssl.bitly.com'
     address = "/v4/shorten"
     headers = {"Authorization": f"Bearer {token}"}
@@ -25,7 +25,7 @@ def count_clicks(token, link):
     response = requests.get(f"{url}{address}{bitlink.netloc}{bitlink.path}{bitlink_par}",
                             headers=headers, params=params)
     response.raise_for_status()
-    return f"Всего кликов за всё время: {response.json()['total_clicks']}"
+    return response.json()['total_clicks']
 
 
 def check_bitlink(token, link_to_check):
@@ -39,18 +39,18 @@ def check_bitlink(token, link_to_check):
 
 def main():
     load_dotenv()
-    token_bitly = os.getenv("TOKEN_BITLY")
+    token_bitly = os.environ['TOKEN_BITLY']
     link_to_check = input("Введите ссылку: \n")
-    if check_bitlink(link_to_check=link_to_check, token=token_bitly):
+    if check_bitlink(token_bitly, link_to_check):
         try:
-            print(count_clicks(token, link=link_to_check))
+            print(f"Всего кликов за всё время: {count_clicks(token_bitly, link=link_to_check)}")
         except requests.exceptions.HTTPError as error:
-            exit(print(error))
+            print(error)
     else:
         try:
-            print(f"Ваш битлинк:{create_short_link(long_url=link_to_check, token=token_bitly)}")
+            print(f"Ваш битлинк:{create_short_link(token_bitly, link_to_check)}")
         except requests.exceptions.HTTPError as error:
-            exit(print(error))
+            print(error)
 
 
 if __name__ == "__main__":
