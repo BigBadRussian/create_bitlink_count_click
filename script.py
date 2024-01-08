@@ -1,7 +1,9 @@
 import os
 import requests
+import argparse
 from dotenv import load_dotenv
 from urllib.parse import urlsplit
+from urllib.parse import urlparse
 
 
 def create_short_link(token, long_url):
@@ -30,20 +32,27 @@ def count_clicks(token, link):
 
 def check_bitlink(token, link_to_check):
     url = 'https://api-ssl.bitly.com'
-    link_to_check = urlsplit(link_to_check)
+    link_to_check = urlparse(link_to_check)
     address = "/v4/bitlinks/"
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(f"{url}{address}{link_to_check.netloc}{link_to_check.path}", headers=headers)
     return response.ok
 
 
+def create_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('link')
+    return parser
+
+
 def main():
+    parser = create_parser()
+    link_to_check = parser.parse_args().link
     load_dotenv()
     bitly_token = os.environ['BITLY_TOKEN']
-    link_to_check = input("Введите ссылку: \n")
     if check_bitlink(bitly_token, link_to_check):
         try:
-            print(f"Всего кликов за всё время: {count_clicks(bitly_token, link=link_to_check)}")
+            print(f"Всего кликов за всё время: {count_clicks(bitly_token, link_to_check)}")
         except requests.exceptions.HTTPError as error:
             print(error)
     else:
