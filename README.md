@@ -14,7 +14,7 @@ source env/bin/activate
 pip3 install -r requirements.txt
 ```
 ### Переменные окружения
-- TOKEN_BITLY
+- BITLY_TOKEN
 1. Создайте файл ".env" рядом со скриптом.
 2. Запишите в .env файл ваш токен API Bitly.com
 ### Получить токен
