@@ -5,7 +5,7 @@
 ### Требования
 Python3 должен быть установлен. Установите необходимые библиотеки:
 ```bash
-puthon3 -m venv env 
+python3 -m venv env 
 ```
 ```bash
 source env/bin/activate
